@@ -1,0 +1,21 @@
+{
+  "name": "trainee-manage",
+  "description": "",
+  "main": "",
+  "authors": [
+    "phongtt-1837 <truong.thanh.phong@sun-asterisk.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/phongtt-1837/trainee-manage",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "tracking_theme": "*"
+  }
+}
