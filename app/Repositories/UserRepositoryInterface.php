@@ -9,7 +9,7 @@ interface UserRepositoryInterface
      * @param  array  $relation
      * @return colection
      */
-    public function all(array $relation);
+    public function all($relation = []);
 
     /**
      * Get all small sliced collection of instance
@@ -17,14 +17,14 @@ interface UserRepositoryInterface
      * @param  int $number
      * @return colection
      */
-    public function paginate(array $relation, $number);
+    public function paginate($relation = [], $number);
 
     /**
      * Create a new instance of the given model
      * @param  array $data
      * @return instance
      */
-    public function store(array $data);
+    public function store($data);
 
     /**
      * Get instance by id
@@ -32,7 +32,7 @@ interface UserRepositoryInterface
      * @param  int $id
      * @return instance
      */
-    public function get(array $relation, $id);
+    public function get($relation = [], $id);
 
     /**
      * Update instance by id
@@ -40,7 +40,7 @@ interface UserRepositoryInterface
      * @param  int $id
      * @return instance
      */
-    public function update(array $data, $id);
+    public function update($data, $id);
 
     /**
      * Delete instance by id
