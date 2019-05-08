@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin', 'AdminController@index');
+Route::get('/admin', 'AdminController@index')->name('dashboard');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 

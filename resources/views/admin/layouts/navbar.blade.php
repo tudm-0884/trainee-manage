@@ -1,4 +1,3 @@
-<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
 <nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-semi-dark navbar-shadow">
     <div class="navbar-wrapper">
         <div class="navbar-header">
@@ -39,7 +38,7 @@
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#"><i class="ft-user"></i> {{ __('Edit Profile') }}</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ asset('/logout') }}"><i class="ft-power"></i> Logout</a>
+                            <a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
                         </div>
                     </li>
                     <li class="dropdown dropdown-language nav-item">
@@ -66,61 +65,3 @@
         </div>
     </div>
 </nav>
-<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
-    <div class="main-menu-content">
-        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a href="{{ asset('/admin') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('Dashboard') }}</span></a>
-            </li>
-            <li class=" nav-item">
-                <a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainers') }}</span></a>
-                <ul class="menu-content">
-                    <li><a class="menu-item" href="{{ route('trainers.index') }}" data-i18n="nav.templates.vert.main">{{ __('All Trainers') }}</a>
-                    </li>
-                    <li><a class="menu-item" href="{{ route('trainers.create') }}" data-i18n="nav.templates.horz.main">{{ __('Create Trainer') }}</a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" nav-item">
-                <a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainees') }}</span></a>
-                <ul class="menu-content">
-                    <li><a class="menu-item" href="{{ route('trainees.index') }}" data-i18n="nav.templates.vert.main">{{ __('All Trainess') }}</a>
-                    </li>
-                    <li><a class="menu-item" href="{{ route('trainees.create') }}" data-i18n="nav.templates.horz.main">{{ __('Create Trainee') }}</a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" nav-item">
-                <a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Schedule') }}</span></a>
-                <ul class="menu-content">
-                    <li>
-                        <a class="menu-item" href="#" data-i18n="nav.templates.vert.main">{{ __('Phase') }}</a>
-                        <ul class="menu-content">
-                            <li><a class="menu-item" href="{{ route('phases.index') }}" data-i18n="nav.templates.vert.classic_menu">{{ __('All Phase') }}</a>
-                            </li>
-                            <li><a class="menu-item" href="{{ route('phases.create') }}" data-i18n="nav.templates.vert.compact_menu">{{ __('Create New Phase') }}</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="#" data-i18n="nav.templates.horz.main">{{ __('Schedule') }}</a>
-                        <ul class="menu-content">
-                            <li><a class="menu-item" href="{{ route('schedules.index') }}" data-i18n="nav.templates.horz.classic">{{ __('All Schedule') }}</a>
-                            </li>
-                            <li><a class="menu-item" href="{{ route('schedules.create') }}" data-i18n="nav.templates.horz.top_icon">{{ __('Create New Schedule') }}</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="#" data-i18n="nav.templates.horz.main">{{ __('Course') }}</a>
-                        <ul class="menu-content">
-                            <li><a class="menu-item" href="{{ route('courses.index') }}" data-i18n="nav.templates.horz.classic">{{ __('All Courses') }}</a>
-                            </li>
-                            <li><a class="menu-item" href="{{ route('courses.create') }}" data-i18n="nav.templates.horz.top_icon">{{ __('Create New Course') }}</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-</div>
