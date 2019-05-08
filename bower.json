@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "tracking_theme": "*"
+    "tracking_theme": "*",
+    "line-awesome": "^0.10.7"
   }
 }
