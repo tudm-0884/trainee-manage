@@ -2,8 +2,7 @@
 
 namespace App\Repositories\Contracts;
 
-use App\Repository\BaseRepositoryInterface;
-use App\Repository\Contracts\BaseRepository;
+use App\Repositories\BaseRepositoryInterface;
 
 class BaseRepository implements BaseRepositoryInterface
 {
