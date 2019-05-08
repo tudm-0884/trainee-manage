@@ -9,3 +9,9 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.README.md
+.readme.md
+.gitconfig
+/public/bower_components
+.bowerrc
+bower.json
