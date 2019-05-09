@@ -48,4 +48,6 @@ interface UserRepositoryInterface
      * @return int|boolean
      */
     public function delete($id);
+
+    public function getCurrentUser();
 }

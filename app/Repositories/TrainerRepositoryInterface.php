@@ -48,4 +48,10 @@ interface TrainerRepositoryInterface
      * @return int|boolean
      */
     public function delete($id);
+
+    public function getLanguage();
+    public function getStaffType();
+    public function getOffice();
+    public function getCurrentUser();
+
 }

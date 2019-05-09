@@ -18,8 +18,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
-    Route::resource('users', 'UserController');
+Route::group(['prefix' => 'admin',], function () {
     Route::resource('trainers', 'TrainerController');
     Route::resource('trainees', 'TraineeController');
     Route::resource('phases', 'PhaseController');
