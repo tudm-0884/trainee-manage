@@ -23,6 +23,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/tracking_theme/assets/css/style.css') }}">
 <!-- END Custom CSS-->
 <!-- Icon -->
-<link rel="stylesheet" type="text/css" href="{{ asset('bower_components//tracking_theme/app-assets/fonts/line-awesome/css/line-awesome.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('bower_components/tracking_theme/app-assets/fonts/line-awesome/css/line-awesome.min.css') }}">
+
+<link rel="stylesheet" type="text/css" href="{{ asset('bower_components/tracking_theme/app-assets/css/plugins/animate/animate.css') }}">
 
 @stack('css')
