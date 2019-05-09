@@ -48,4 +48,11 @@ interface TraineeRepositoryInterface
      * @return int|boolean
      */
     public function delete($id);
+
+    public function getOffice();
+    public function getLanguage();
+    public function getStaffType();
+    public function getGender();
+    public function getUniversity();
+    public function getTrainer();
 }

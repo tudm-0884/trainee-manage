@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', __('Edit Trainer'))
+@section('title', __('Edit Trainee'))
 @section('content')
     <div class="row match-height">
         <div class="col-md-6 m-auto">
@@ -10,7 +10,7 @@
                 </div>
                 <div class="card-content collapse show">
                     <div class="card-body">
-                        @include('admin.trainers.form')
+                        @include('admin.trainees.form')
                     </div>
                 </div>
             </div>

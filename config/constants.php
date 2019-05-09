@@ -2,6 +2,7 @@
 return [
     'constants' => [
         'default_password' => 'abc123',
+        'default_value' => '0',
     ],
     'roles' => [
         'admin' => '1',
@@ -11,5 +12,9 @@ return [
     'test_or_not' => [
         'yes' => '1',
         'no' => '0',
+    ],
+    'gender' => [
+        '0' => 'Male',
+        '1' => 'Female',
     ],
 ];

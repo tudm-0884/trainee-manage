@@ -16,7 +16,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin',], function () {
     Route::resource('trainers', 'TrainerController');
