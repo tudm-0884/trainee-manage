@@ -3,7 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\Repositories\ScheduleRepositoryInterface;
-use App\Repositories\BaseRepository;
+use App\Repositories\Contracts\BaseRepository;
 use App\Models\Schedule;
 
 class ScheduleRepository extends BaseRepository implements ScheduleRepositoryInterface

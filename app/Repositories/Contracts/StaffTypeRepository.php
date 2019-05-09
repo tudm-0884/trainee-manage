@@ -3,7 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\Repositories\StaffTypeRepositoryInterface;
-use App\Repositories\BaseRepository;
+use App\Repositories\Contracts\BaseRepository;
 use App\Models\StaffType;
 
 class StaffTypeRepository extends BaseRepository implements StaffTypeRepositoryInterface

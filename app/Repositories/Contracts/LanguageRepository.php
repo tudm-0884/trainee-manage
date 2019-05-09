@@ -3,7 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\Repositories\LanguageRepositoryInterface;
-use App\Repositories\BaseRepository;
+use App\Repositories\Contracts\BaseRepository;
 use App\Models\Language;
 
 class LanguageRepository extends BaseRepository implements LanguageRepositoryInterface

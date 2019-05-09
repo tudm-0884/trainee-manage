@@ -3,7 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\Repositories\PhaseRepositoryInterface;
-use App\Repositories\BaseRepository;
+use App\Repositories\Contracts\BaseRepository;
 use App\Models\Phase;
 
 class PhaseRepository extends BaseRepository implements PhaseRepositoryInterface

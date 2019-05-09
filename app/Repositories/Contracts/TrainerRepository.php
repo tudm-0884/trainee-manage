@@ -3,7 +3,7 @@
 namespace App\Repositories\Contracts;
 
 use App\Repositories\TrainerRepositoryInterface;
-use App\Repositories\BaseRepository;
+use App\Repositories\Contracts\BaseRepository;
 use App\Models\Trainer;
 
 class TrainerRepository extends BaseRepository implements TrainerRepositoryInterface
