@@ -29,7 +29,7 @@ class BaseRepository implements BaseRepositoryInterface
      */
     public function all($relation = [])
     {
-        return $this->model->with($relation)->all();
+        return $this->model->with($relation)->get();
     }
 
     /**
@@ -72,7 +72,8 @@ class BaseRepository implements BaseRepositoryInterface
      */
     public function update($data, $id)
     {
-        $model = $this->model->get($id);
+        $model = $this->get([], $id);
+        
         return $model->update($data);
     }
 

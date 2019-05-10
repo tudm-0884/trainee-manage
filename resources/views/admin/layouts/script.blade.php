@@ -12,5 +12,6 @@
 <!-- BEGIN PAGE LEVEL JS-->
 <script src="{{ asset('bower_components/tracking_theme/app-assets/js/scripts/forms/listbox/form-duallistbox.js') }}"></script>
 <!-- END PAGE LEVEL JS-->
+<script src="{{ asset('bower_components/tracking_theme/app-assets/js/scripts/modal/components-modal.js') }}"></script>
 
 @stack('js')
