@@ -41,7 +41,7 @@
                                             <td>
                                                 <a href="{{ route('phases.edit', $phase->id) }}" class="btn btn-light round mr-1">{{ __('Edit') }}</a>
                                                 <button type="button" class="btn btn-danger round mr-1" data-toggle="modal" data-target="#delete-{{ $phase->id }}">{{ __('Delete') }}</button>
-                                                @include('admin.components.modal', ['id' => $phase->id])
+                                                @include('admin.components.modal', ['route' => route('phases.destroy', $phase->id), 'id' => $phase->id])
                                             </td>
                                         </tr>
                                     @endforeach

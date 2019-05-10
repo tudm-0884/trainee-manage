@@ -52,7 +52,11 @@ class TraineeController extends Controller
      */
     public function store(Request $request)
     {
-        $this->trainee->store($request);
+        $trainee = $this->trainee->store($request);
+        if (!$trainee) {
+            return back()->with('error', __('Something went wrong!'));
+        }
+
 
         return redirect()->route('trainees.index');
     }
@@ -65,7 +69,10 @@ class TraineeController extends Controller
      */
     public function show($id)
     {
-        //
+        $trainee = $this->trainee->get([], $id);
+
+        return view('trainees.show', compact('trainee'));
+
     }
 
     /**
@@ -83,6 +90,9 @@ class TraineeController extends Controller
         $genders = $this->trainee->getGender();
         $trainers = $this->trainee->getTrainer();
         $trainee = $this->trainee->get([], $id);
+        if (!$trainee) {
+            return back()->with('error', __('Something went wrong!'));
+        }
 
         return view('admin.trainees.edit', compact('languages', 'offices', 'staff_types', 'universities', 'genders', 'trainers', 'trainee'));
     }
@@ -96,9 +106,12 @@ class TraineeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->trainee->update($request->all(), $id);
+        $trainee = $this->trainee->update($request->all(), $id);
+        if (!$trainee) {
+            return back()->with('error', __('Something went wrong!'));
+        }
 
-        return redirect()->route('trainees.index');
+        return redirect()->route('trainees.index')->with('success', __('Create successfully!'));
     }
 
     /**
