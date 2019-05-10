@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 @section('title', __('Add new Trainer'))
-@section('main')
+@section('content')
     <div class="row match-height">
         <div class="col-md-6 m-auto">
             <div class="card">

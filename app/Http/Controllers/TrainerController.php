@@ -102,6 +102,8 @@ class TrainerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleted = $this->trainer->delete($id);
+
+        return redirect()->back()->with('success', __('Delete successfully!'));
     }
 }

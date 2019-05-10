@@ -57,4 +57,9 @@ class Trainee extends Model
     {
         return $this->belongsTo(Course::class, 'course_id');
     }
+
+    public function office()
+    {
+        return $this->belongsTo(Office::class, 'office_id');
+    }
 }
