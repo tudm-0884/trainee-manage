@@ -133,4 +133,17 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
         ]);
     }
 
+    public function delete($id)
+    {
+        DB::beginTransaction();
+        try {
+            $trainee = $this->trainee::findOrFail($id);
+            $user_id = $trainee->user->id;
+            $this->user->destroy($user_id);
+            $this->trainee->destroy($id);
+            DB::commit();
+        } catch (Exception $e) {
+            return redirect()->route('trainees.index');
+        }
+    }
 }

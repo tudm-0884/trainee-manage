@@ -49,9 +49,12 @@ class TrainerController extends Controller
      */
     public function store(Request $request)
     {
-        $this->trainer->store($request->all());
+        $trainer = $this->trainer->store($request->all());
+        if (!$trainer) {
+            return back()->with('error', __('Something went wrong!'));
+        }
 
-        return redirect()->route('trainers.index');
+        return redirect()->route('trainers.index')->with('success', __('Create successfully!'));
     }
 
     /**
@@ -62,7 +65,9 @@ class TrainerController extends Controller
      */
     public function show($id)
     {
-        //
+        $trainer = $this->trainer->get([], $id);
+
+        return view('trainer.show', compact('trainer'));
     }
 
     /**
@@ -76,6 +81,9 @@ class TrainerController extends Controller
         $languages = $this->trainer->getLanguage();
         $offices = $this->trainer->getOffice();
         $trainer = $this->trainer->get([], $id);
+        if (!$trainer) {
+            return back()->with('error', __('Something went wrong!'));
+        }
 
         return view('admin.trainers.edit', compact('trainer', 'languages', 'offices'));
     }
@@ -89,9 +97,12 @@ class TrainerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->trainer->update($request->all(), $id);
+        $trainer = $this->trainer->update($request->all(), $id);
+        if (!$trainer) {
+            return back()->with('error', __('Something went wrong!'));
+        }
 
-        return view('admin.trainers.index');
+        return redirect()->route('trainers.index')->with('success', __('Update successfully!'));
     }
 
     /**

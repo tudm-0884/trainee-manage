@@ -13,7 +13,7 @@
                 <p>{{ __('You will delete one instance from database and can\'t see it at next time!') }}</p>
             </div>
             <div class="modal-footer">
-                <form action="{{ route('phases.destroy', $id) }}" method="POST">
+                <form action="{{ $route }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">{{ __('Cancel') }}</button>

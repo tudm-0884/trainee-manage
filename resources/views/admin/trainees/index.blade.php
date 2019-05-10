@@ -3,11 +3,6 @@
 @section('content')
     <div class="content-wrapper">
         <div class="content-body">
-
-            @foreach ($errors->all() as $error)
-                {{ $error }}
-            @endforeach
-
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -22,7 +17,11 @@
                                     <li><a data-action="close"><i class="ft-x"></i></a></li>
                                 </ul>
                             </div>
+                            <div class="btn btn-outline-info btn-glow float-right mt-2">
+                                <a href="{{ route('trainees.create') }}"> {{ __('Create') }}</a>
+                            </div>
                         </div>
+                        @include('admin.components.alert')
                         <div class="card-content collapse show">
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -46,6 +45,7 @@
                                             <th>{{ __('Start Time') }}</th>
                                             <th>{{ __('End Time') }}</th>
                                             <th>{{ __('Course') }}</th>
+                                            <th>{{ __('Action') }}</th>
 
                                         </tr>
                                         </thead>
@@ -69,6 +69,11 @@
                                                 <th>{{ $trainee->internship_start_time }}</th>
                                                 <th>{{ $trainee->internship_end_time }}</th>
                                                 <th>{{ isset($trainee->course->course_name) ? $trainee->course->course_name : '' }}</th>
+                                                <td>
+                                                    <a href="{{ route('trainees.edit', $trainee->id) }}" class="btn btn-light round mr-1">{{ __('Edit') }}</a>
+                                                    <button type="button" class="btn btn-danger round mr-1" data-toggle="modal" data-target="#delete-{{ $trainee->id }}">{{ __('Delete') }}</button>
+                                                    @include('admin.components.modal', ['route' => route('trainees.destroy', $trainee->id), 'id' => $trainee->id ])
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

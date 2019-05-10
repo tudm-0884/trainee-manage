@@ -10,6 +10,7 @@ use App\Models\Trainer;
 use App\Models\User;
 use App\Models\Office;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Config;
 
@@ -97,4 +98,19 @@ class TrainerRepository extends BaseRepository implements TrainerRepositoryInter
     {
         return $this->trainer::all();
     }
+
+    public function delete($id)
+    {
+        DB::beginTransaction();
+        try {
+            $trainer = $this->trainer::findOrFail($id);
+            $user_id = $trainer->user->id;
+            $this->user->destroy($user_id);
+            $this->trainer->destroy($id);
+            DB::commit();
+        } catch (Exception $e) {
+            return redirect()->route('trainers.index');
+        }
+    }
+
 }

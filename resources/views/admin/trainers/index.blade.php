@@ -17,7 +17,11 @@
                                 <li><a data-action="close"><i class="ft-x"></i></a></li>
                             </ul>
                         </div>
+                        <div class="btn btn-outline-info btn-glow float-right mt-2">
+                            <a href="{{ route('trainers.create') }}"> {{ __('Create') }}</a>
+                        </div>
                     </div>
+                    @include('admin.components.alert')
                     <div class="card-content collapse show">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -32,6 +36,7 @@
                                         <th>{{ __('Phone') }}</th>
                                         <th>{{ __('Address') }}</th>
                                         <th>{{ __('Office') }}</th>
+                                        <th>{{ __('Action') }}</th>
 
                                     </tr>
                                     </thead>
@@ -46,6 +51,11 @@
                                             <td>{{ $trainer->phone }}</td>
                                             <td>{{ $trainer->address }}</td>
                                             <td>{{ $trainer->office->name }}</td>
+                                            <td>
+                                                <a href="{{ route('trainers.edit', $trainer->id) }}" class="btn btn-light round mr-1">{{ __('Edit') }}</a>
+                                                <button type="button" class="btn btn-danger round mr-1" data-toggle="modal" data-target="#delete-{{ $trainer->id }}">{{ __('Delete') }}</button>
+                                                @include('admin.components.modal', ['route' => route('trainers.destroy', $trainer->id), 'id' => $trainer->id ])
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

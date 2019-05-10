@@ -48,12 +48,12 @@
             </select>
         </div>
     </div>
-    <div class="form-actions">
-        <button type="button" class="btn btn-warning mr-1">
-            <i class="ft-x"></i> {{ __('Cancel') }}
-        </button>
-        <button type="submit" class="btn btn-primary">
-            <i class="la la-check-square-o"></i> {{ __('Save') }}
-        </button>
-    </div>
+        <div class="form-actions center">
+            <button type="submit" class="btn btn-outline-purple btn-min-width btn-glow mr-1 mb-1">
+                <i class="la la-check-square-o"></i> {{ isset($trainer) ? __('Update') : __('Save') }}
+            </button>
+            <a class="btn btn-outline-danger btn-min-width btn-glow mr-1 mb-1" href="{{ route('trainers.index') }}">
+                <i class="ft-x"></i> {{ __('Cancel') }}
+            </a>
+        </div>
 </form>
