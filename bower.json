@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "tracking_theme": "*",
-    "line-awesome": "^0.10.7"
+    "line-awesome": "^0.10.7",
+    "trainee-manage": "dynamic-timeline#*"
   }
 }

@@ -48,4 +48,8 @@ interface ScheduleRepositoryInterface
      * @return int|boolean
      */
     public function delete($id);
+
+    public function getStaffType();
+    public function getPhase($id);
+    public function getTime($id);
 }

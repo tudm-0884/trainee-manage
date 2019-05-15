@@ -16,6 +16,15 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label for="issueinput5">{{ __('Staff Type') }}</label>
+            <select id="staff_type_id" name="staff_type_id" class="form-control" data-toggle="tooltip"
+                    data-trigger="hover" data-placement="top" data-title="Priority">
+                @foreach ($staff_types as $staff_type)
+                    <option value="{{ $staff_type->id }}" {{ (isset($trainee) && $trainee->staff_type_id == $staff_type->id) ? 'selected' : '' }}>{{ $staff_type->name }}</option>
+                @endforeach
+            </select>
+        </div>
     </fieldset>
     <!-- Step 2 -->
     <h6>{{ __('Step 2') }}</h6>
