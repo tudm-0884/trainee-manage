@@ -20,6 +20,6 @@ class Phase extends Model
      */
     public function schedules()
     {
-        return $this->belongsToMany(Schedule::class, 'schedule_phase', 'phase_id', 'schedule_id')->withPivot('priority', 'time_duration');
+        return $this->belongsToMany(Schedule::class, 'phase_schedule', 'phase_id', 'schedule_id')->withPivot('priority', 'time_duration');
     }
 }

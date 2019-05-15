@@ -1,0 +1,3 @@
+#schedule_form select[multiple = 'multiple'] {
+    overflow: auto;
+}

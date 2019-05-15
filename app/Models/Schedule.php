@@ -18,13 +18,13 @@ class Schedule extends Model
      *
      * @return 
      */
-    public function schedule()
+    public function courses()
     {
         return $this->hasMany(Course::class, 'schedule_id');
     }
 
     public function phases()
     {
-        return $this->belongsToMany(Phase::class, 'schedule_phase', 'schedule_id', 'phase_id')->withPivot('priority', 'time_duration');
+        return $this->belongsToMany(Phase::class, 'phase_schedule', 'schedule_id', 'phase_id')->withPivot('priority', 'time_duration');
     }
 }
