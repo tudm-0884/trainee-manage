@@ -29,20 +29,25 @@ class ScheduleRepository extends BaseRepository implements ScheduleRepositoryInt
         DB::beginTransaction();
         try {
             $this->model->language_id = $data['language_id'];
-            $this->model->applied_day = config('constants.constants.default_value');
+            $this->model->applied_day = $data['applied_day'];
             $this->model->status = config('constants.constants.default_value');
             $this->model->staff_type_id = $data['staff_type_id'];
+            $this->model->name = $data['name'];
+            $selected_phases_id = $data['selected_phases_id'];
+            $selected_phases_id = ltrim($selected_phases_id, '-');
+            $selected_phases_id = explode("-", $selected_phases_id);
 
             if ($this->model->save()) {
-                foreach ($data['phase_id'] as $key => $value) {
+                foreach ($selected_phases_id as $key => $value) {
                     $phase_schedule_data = [
                         'time_duration' => $data['time_duration_' . $key],
                         'priority' => $key,
                     ];
-                    $this->model->phases()->attach($data['phase_id'][$key], $phase_schedule_data);
+                    $this->model->phases()->attach($selected_phases_id[$key], $phase_schedule_data);
                 }
             }
             DB::commit();
+            return true;
         } catch (Exception $e) {
             return redirect()->route('schedules.index');
         }

@@ -96,6 +96,7 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
                 'course_id' => config('constants.constants.default_value'),
             ]);
             DB::commit();
+            return true;
         } catch (Exception $e) {
             return redirect()->route('trainees.index');
         }

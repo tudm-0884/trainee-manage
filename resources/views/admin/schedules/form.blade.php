@@ -25,13 +25,22 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label for="complaintinput2">{{ __('Name') }}</label>
+            <input type="text" id="schedule_name" class="form-control round"
+                   name="name" value="{{ old('name') }}">
+        </div>
+        <div class="form-group">
+            <label for="complaintinput3">{{ __('Applied Day') }}</label>
+            <input type="date" id="applied_day_schedule" class="form-control round" name="applied_day" value="{{ old('applied_day') }}">
+        </div>
     </fieldset>
     <!-- Step 2 -->
     <h6>{{ __('Step 2') }}</h6>
     <fieldset>
         <section class="basic-dual-listbox">
-            <input type="hidden" id="selected_phases_id" value="">
-            <input type="hidden" id="selected_phases_name" value="">
+            <input type="hidden" id="selected_phases_id" name="selected_phases_id" value="">
+            <input type="hidden" id="selected_phases_name" name="selected_phases_name" value="">
             <div class="form-group">
                 <select multiple="multiple" class="duallistbox" id="phase_id" name="phase_id[]">
                     @foreach ($phases as $phase)

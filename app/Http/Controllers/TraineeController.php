@@ -57,8 +57,7 @@ class TraineeController extends Controller
             return back()->with('error', __('Something went wrong!'));
         }
 
-
-        return redirect()->route('trainees.index');
+        return redirect()->route('trainees.index')->with('success', __('Create successfully!'));
     }
 
     /**

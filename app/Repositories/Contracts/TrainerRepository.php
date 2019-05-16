@@ -49,20 +49,27 @@ class TrainerRepository extends BaseRepository implements TrainerRepositoryInter
 
     public function store($data)
     {
-        $user = $this->user->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make(Config::get('constants.constants.default_password')),
-            'roles' => Config::get('constants.roles.trainer'),
-        ]);
-        $this->trainer->create([
-            'dob' => $data['dob'],
-            'address' => $data['address'],
-            'phone' => $data['phone'],
-            'language_id' => $data['language_id'],
-            'user_id' => $user->id,
-            'office_id' => $data['office_id'],
-        ]);
+        DB::beginTransaction();
+        try {
+            $user = $this->user->create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make(Config::get('constants.constants.default_password')),
+                'roles' => Config::get('constants.roles.trainer'),
+            ]);
+            $this->trainer->create([
+                'dob' => $data['dob'],
+                'address' => $data['address'],
+                'phone' => $data['phone'],
+                'language_id' => $data['language_id'],
+                'user_id' => $user->id,
+                'office_id' => $data['office_id'],
+            ]);
+            DB::commit();
+            return true;
+        } catch (Exception $e) {
+            return redirect()->route('trainees.index');
+        }
     }
 
     public function get($relation = [], $id)
