@@ -27,4 +27,14 @@ class Schedule extends Model
     {
         return $this->belongsToMany(Phase::class, 'phase_schedule', 'schedule_id', 'phase_id')->withPivot('priority', 'time_duration');
     }
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class, 'language_id');
+    }
+
+    public function staff_type()
+    {
+        return $this->belongsTo(StaffType::class, 'staff_type_id');
+    }
 }

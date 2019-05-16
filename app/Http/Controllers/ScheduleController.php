@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\LanguageRepositoryInterface;
 use App\Repositories\PhaseRepositoryInterface;
 use App\Repositories\ScheduleRepositoryInterface;
+use App\Repositories\StaffTypeRepositoryInterface;
 use App\Repositories\TraineeRepositoryInterface;
 use App\Repositories\TrainerRepositoryInterface;
 use App\Repositories\UserRepositoryInterface;
@@ -38,7 +39,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        return view('admin.schedules.index');
+        $schedules = $this->schedule->all();
+
+        return view('admin.schedules.index', compact('schedules'));
     }
 
     /**
@@ -52,8 +55,9 @@ class ScheduleController extends Controller
         $trainers = $this->trainer->all();
         $trainees = $this->trainee->all();
         $languages = $this->language->all();
+        $staff_types = $this->schedule->getStaffType();
 
-        return view('admin.schedules.create', compact('phases', 'trainees', 'trainers', 'languages'));
+        return view('admin.schedules.create', compact('phases', 'trainees', 'trainers', 'languages', 'staff_types'));
     }
 
     /**
@@ -91,7 +95,10 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $phases = $this->schedule->getPhase($id);
+        $duration = $this->schedule->getTime($id);
+
+        return view('admin.schedules.edit', compact('phases', 'duration'));
     }
 
     /**
