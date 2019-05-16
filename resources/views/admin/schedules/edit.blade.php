@@ -2,6 +2,7 @@
 @section('title', __('Schedule detail'))
 @section('content')
     <div class="content-wrapper">
+        <h2>{{ __($schedule->name) }}</h2>
         <div id="my-timeline" data-duration="{{ json_encode($duration) }}">
 
         </div>

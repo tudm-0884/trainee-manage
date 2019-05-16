@@ -25,6 +25,8 @@ class ScheduleRequest extends FormRequest
     {
         return [
             'phase_id' => 'required',
+            'name' => 'required',
+            'applied_day' => 'required',
         ];
     }
 }

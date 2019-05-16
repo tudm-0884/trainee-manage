@@ -73,7 +73,7 @@ class ScheduleController extends Controller
             return back()->with('error', __('Something went wrong!'));
         }
 
-        return redirect()->route('schedules.index');
+        return redirect()->route('schedules.index')->with('success', __('Create successfully!'));
     }
 
     /**
@@ -95,10 +95,11 @@ class ScheduleController extends Controller
      */
     public function edit($id)
     {
+        $schedule = $this->schedule->get([], $id);
         $phases = $this->schedule->getPhase($id);
         $duration = $this->schedule->getTime($id);
 
-        return view('admin.schedules.edit', compact('phases', 'duration'));
+        return view('admin.schedules.edit', compact('phases', 'duration', 'schedule'));
     }
 
     /**
