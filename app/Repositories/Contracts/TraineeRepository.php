@@ -27,6 +27,7 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
      */
     public function __construct(Trainee $trainee, User $user)
     {
+        parent::__construct($trainee);
         $this->trainee = $trainee;
         $this->user = $user;
     }
@@ -146,5 +147,20 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
         } catch (Exception $e) {
             return redirect()->route('trainees.index');
         }
+    }
+
+    public function getTraineesForCourse()
+    {
+        return $this->model->where('course_id', 0)->with('user')->get();
+    }
+
+    public function addCourse($trainee_ids, $course_id)
+    {
+        return $this->model->whereIn('id', $trainee_ids)->update(['course_id' => $course_id]);
+    }
+
+    public function removeTraineeIntoCourse($id)
+    {
+        return $this->model->find($id)->update(['course_id' => 0]);
     }
 }

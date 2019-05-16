@@ -82,4 +82,13 @@ class ScheduleRepository extends BaseRepository implements ScheduleRepositoryInt
         return $final_result;
     }
 
+    /**
+     * Get array of schedule
+     * @param  array $relation
+     * @return array
+     */
+    public function getScheduleArray()
+    {
+        return $this->model->get()->pluck('name', 'id')->toArray();
+    }
 }
