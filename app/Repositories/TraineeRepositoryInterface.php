@@ -55,4 +55,8 @@ interface TraineeRepositoryInterface
     public function getGender();
     public function getUniversity();
     public function getTrainer();
+
+    public function getTraineesForCourse();
+    public function addCourse($trainee_ids, $course_id);
+    public function removeTraineeIntoCourse($id);
 }

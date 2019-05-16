@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Course extends Model
 {
@@ -26,5 +27,20 @@ class Course extends Model
     public function trainees()
     {
         return $this->hasMany(Trainee::class);
+    }
+
+    /**
+     * Mutators at here.
+     *
+     * @return 
+     */
+    public function getStartDateAttribute($value)
+    {
+        return $this->attributes['start_date'] = Carbon::parse($value)->format('Y-m-d');
+    }
+
+    public function getEndDateAttribute($value)
+    {
+        return $this->attributes['end_date'] = Carbon::parse($value)->format('Y-m-d');
     }
 }

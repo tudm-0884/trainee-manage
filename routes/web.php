@@ -24,4 +24,6 @@ Route::group(['prefix' => 'admin',], function () {
     Route::resource('phases', 'PhaseController');
     Route::resource('schedules', 'ScheduleController');
     Route::resource('courses', 'CourseController');
+    Route::post('addTraineeIntoCourse', 'CourseController@addTraineeIntoCourse')->name('courses.add_trainee_into_course');
+    Route::post('removeTraineeFromCourse/{id}', 'CourseController@removeTraineeIntoCourse')->name('courses.remove_trainee_from_course');
 });

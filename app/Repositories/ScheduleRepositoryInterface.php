@@ -52,4 +52,10 @@ interface ScheduleRepositoryInterface
     public function getStaffType();
     public function getPhase($id);
     public function getTime($id);
+    
+    /**
+     * Get array of schedule
+     * @return array
+     */
+    public function getScheduleArray();
 }
