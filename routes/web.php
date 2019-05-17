@@ -10,15 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/admin', 'AdminController@index')->name('dashboard');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Auth::routes(['register' => false]);
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home')->middleware('admin')->middleware('can:see-trainees');
 
-Route::group(['prefix' => 'admin',], function () {
+Route::group(['prefix' => 'admin','middleware' => 'can:see-trainer, can:see-admin'], function () {
+    Route::get('/', 'AdminController@index')->name('dashboard');
     //trainer
     Route::resource('trainers', 'TrainerController');
     //trainee
@@ -38,4 +38,4 @@ Route::group(['prefix' => 'admin',], function () {
     Route::put('updateContent/{id}', 'TestController@updateContent')->name('tests.update_content');
 });
 
-Route::get('/trainee_schedule', 'TraineeController@getSchedule')->name('trainee.trainee_schedule');
+Route::get('/trainee_schedule', 'TraineeController@getSchedule')->name('trainee.trainee_schedule')->middleware('admin')->middleware('can:see-trainers');
