@@ -45,7 +45,7 @@ class LoginController extends Controller
      */
     public function username()
     {
-        return 'name';
+        return 'email';
     }
 
     /**
@@ -60,6 +60,37 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect('/login');
+        return $this->loggedOut($request) ?: redirect()->route('login');
+    }
+
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user());
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->roles == config('constants.roles.trainee')) {
+            return redirect()->route('home');
+        }
+
+        return redirect()->route('dashboard');
     }
 }
