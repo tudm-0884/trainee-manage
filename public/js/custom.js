@@ -50,7 +50,7 @@ $(document).ready (function () {
                $('#step3').append("" +
                    "<div class='form-group row'>" +
                    "<label class='col-sm-4'>" + selected_phases_name_edited[i] + "</label>" +
-                   "<input type='number' class='form-control col-sm-4' name='time_duration_" + i + "'>" +
+                   "<input type='number' min='1' class='form-control col-sm-4' name='time_duration_" + i + "'>" +
                    "<span class='col-sm-4'> day(s)</span>" +
                    "<input type='hidden' name='phase_" + i + "' value='" + selected_phases_id_edited[i] + "'>" +
                    "</div>" +
