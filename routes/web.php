@@ -12,8 +12,6 @@
 */
 Route::get('/admin', 'AdminController@index')->name('dashboard');
 
-Route::get('/logout', 'Auth\LoginController@logout');
-
 Auth::routes(['register' => false]);
 
 Route::get('/', 'HomeController@index')->name('home');

@@ -81,6 +81,5 @@ interface TraineeRepositoryInterface
      * @return $tests
      */
     public function showTest();
-    public function removeTraineeIntoCourse($id);
     public function getCourse();
 }

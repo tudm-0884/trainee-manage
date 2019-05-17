@@ -35,7 +35,7 @@
                                         $color = config('constants.test_status_color')[$test->status];
                                     @endphp
                                     <div class="card collapse-icon accordion-icon-rotate">
-                                        <div id="test-id-{{ $key }}" class="card-header border{{ $color }}">
+                                        <div id="test-id-{{ $key }}" class="card-header border-{{ $color }}">
                                             <a data-toggle="collapse" data-parent="#accordionWrap6" href="#test-content-id-{{ $key }}" aria-expanded="false" aria-controls="test-content-id-{{ $key }}" class="card-title lead {{ $color }} collapsed">{{ $test->name }} {{ '(' . config('constants.test_status')[$test->status] . ')' }}</a>
                                         </div>
                                         <div id="test-content-id-{{ $key }}" role="tabpanel" aria-labelledby="test-id-{{ $key }}" class="card-collapse border-{{ $color }} collapse" aria-expanded="true">
