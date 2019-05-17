@@ -156,11 +156,70 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
 
     public function addCourse($trainee_ids, $course_id)
     {
-        return $this->model->whereIn('id', $trainee_ids)->update(['course_id' => $course_id]);
+        DB::beginTransaction();
+        try {
+            $result = $this->model->whereIn('id', $trainee_ids)->update(['course_id' => $course_id]);
+            if ($result) {
+                $this->createTestForTrainees($trainee_ids);
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            $result = false;
+        }
+
+        return $result;
     }
 
-    public function removeTraineeIntoCourse($id)
+    public function removeTraineeFromCourse($id)
     {
-        return $this->model->find($id)->update(['course_id' => 0]);
+        DB::beginTransaction();
+        try {
+            $result = $this->model->find($id)->update(['course_id' => 0]);
+            if ($result) {
+                $this->removeTestFromTrainees($result);
+            }
+            DB::commit();
+        } catch (Exception $e) {
+            $result = false;
+        }
+
+        return $result;
+    }
+
+    public function createTestForTrainees($trainee_ids)
+    {
+        $trainees = $this->model->whereIn('id', $trainee_ids)->get();
+        $trainee_first = $trainees->first();
+        $phase_ids = optional($trainee_first->course->schedule)->phases->where('test_or_not', 1)->pluck('name', 'id')->toArray();
+        $data = [];
+        foreach ($phase_ids as $phase_id => $phase_name) {
+            $data[] = [
+                'name' => $phase_name,
+                'phase_id' => $phase_id
+            ];
+        }
+        foreach ($trainees as $trainee) {
+            $trainee->tests()->createMany($data);
+        }
+
+        return;
+    }
+
+    public function removeTestFromTrainees($id)
+    {
+        $trainee = $this->get([], $id);
+        $trainee->tests()->delete();
+
+        return;
+    }
+
+    public function showTest()
+    {
+        $trainee = auth()->user()->trainee;
+        if ($trainee == null) {
+            return null;
+        }
+        
+        return $trainee->tests;
     }
 }

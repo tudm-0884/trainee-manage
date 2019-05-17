@@ -125,4 +125,16 @@ class TraineeController extends Controller
 
         return redirect()->back()->with('success', __('Delete successfully!'));
     }
+
+    /**
+     * Show trainee test
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showTest()
+    {
+        $tests = $this->trainee->showTest();
+        
+        return view('admin.trainees.show_test', compact('tests'));
+    }
 }

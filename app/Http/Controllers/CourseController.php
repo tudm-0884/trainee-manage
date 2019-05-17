@@ -64,7 +64,7 @@ class CourseController extends Controller
     public function store(CourseRequest $request)
     {
         $course = $this->course->store($request->all());
-        if(!$course) {
+        if (!$course) {
             return back()->with('error', __('Something went wrong!'));
         }
 
@@ -94,7 +94,7 @@ class CourseController extends Controller
     public function edit($id)
     {
         $course = $this->course->get([], $id);
-        if(!$course) {
+        if (!$course) {
             return back()->with('error', __('Something went wrong!'));
         }
         $schedules = $this->schedule->getScheduleArray();
@@ -112,7 +112,7 @@ class CourseController extends Controller
     public function update(CourseRequest $request, $id)
     {
         $course = $this->course->update($request->all(), $id);
-        if(!$course) {
+        if (!$course) {
             return back()->with('error', __('Something went wrong!'));
         }
 
@@ -135,17 +135,17 @@ class CourseController extends Controller
     public function addTraineeIntoCourse(Request $request) 
     {
         $result = $this->trainee->addCourse($request->input('trainee_id'), $request->input('course_id'));
-        if(!$result) {
+        if (!$result) {
             return back()->with('error', __('Add trainee false!'));
         }
 
         return redirect()->back()->with('success', __('Add Trainee successfully!'));
     }
 
-    public function removeTraineeIntoCourse($id)
+    public function removeTraineeFromCourse($id)
     {
-        $result = $this->trainee->removeTraineeIntoCourse($id);
-        if(!$result) {
+        $result = $this->trainee->removeTraineeFromCourse($id);
+        if (!$result) {
             return back()->with('error', __('Remove trainee from course false!'));
         }
 

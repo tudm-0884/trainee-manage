@@ -42,5 +42,13 @@ class User extends Authenticatable
      *
      * @return 
      */
-       
+    public function trainee()
+    {
+        return $this->hasOne(Trainee::class);
+    }
+
+    public function trainer()
+    {
+        return $this->hasOne(Trainee::class);
+    }
 }

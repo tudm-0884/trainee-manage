@@ -48,4 +48,11 @@ interface TestRepositoryInterface
      * @return int|boolean
      */
     public function delete($id);
+
+    /**
+     * update Content link test by trainee
+     * @param  int $id
+     * @return int|boolean
+     */
+    public function updateContent($data, $id);
 }

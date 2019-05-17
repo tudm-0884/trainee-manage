@@ -56,7 +56,29 @@ interface TraineeRepositoryInterface
     public function getUniversity();
     public function getTrainer();
 
+    /**
+     * Get new trainee who don't have course
+     * @return collection
+     */
     public function getTraineesForCourse();
+
+    /**
+     * Add course_id to trainee
+     * @param  int $course_id, array $trainee_ids
+     * @return int|boolean
+     */
     public function addCourse($trainee_ids, $course_id);
-    public function removeTraineeIntoCourse($id);
+
+    /**
+     * Remove trainee without course
+     * @param  int $id
+     * @return int|boolean
+     */
+    public function removeTraineeFromCourse($id);
+
+    /**
+     * Show the tests of user is trainee
+     * @return $tests
+     */
+    public function showTest();
 }
