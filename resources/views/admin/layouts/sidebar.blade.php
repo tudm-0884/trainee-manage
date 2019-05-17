@@ -4,7 +4,7 @@
             <li class=" nav-item"><a href="{{ route('dashboard') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('Dashboard') }}</span></a>
             </li>
             <li class=" nav-item">
-                <a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainers') }}</span></a>
+                <a href="#"><i class="la la-user-secret"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainers') }}</span></a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('trainers.index') }}" data-i18n="nav.templates.vert.main">{{ __('All Trainers') }}</a>
                     </li>
@@ -13,7 +13,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainees') }}</span></a>
+                <a href="#"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainees') }}</span></a>
                 <ul class="menu-content">
                     <li><a class="menu-item" href="{{ route('trainees.index') }}" data-i18n="nav.templates.vert.main">{{ __('All Trainess') }}</a>
                     </li>
@@ -22,7 +22,7 @@
                 </ul>
             </li>
             <li class=" nav-item">
-                <a href="#"><i class="la la-television"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Schedule') }}</span></a>
+                <a href="#"><i class="la la-optin-monster"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Schedule') }}</span></a>
                 <ul class="menu-content">
                     <li>
                         <a class="menu-item" href="#" data-i18n="nav.templates.vert.main">{{ __('Phase') }}</a>
@@ -51,6 +51,21 @@
                             </li>
                         </ul>
                     </li>
+                </ul>
+            </li>
+            <li class=" nav-item">
+                <a href="#"><i class="la la-file-text-o"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Test') }}</span></a>
+                <ul class="menu-content">
+                    <!-- For Trainer here -->
+                    <li>
+                        <a class="menu-item" href="{{ route('tests.index') }}" data-i18n="nav.templates.vert.main">{{ __('All Tests') }}</a>
+                    </li>
+                    <!-- End Trainer here -->
+                    <!-- For Trainee here -->
+                    <li>
+                        <a class="menu-item" href="{{ route('trainees.show_test') }}" data-i18n="nav.templates.vert.main">{{ __('My Tests in courses') }}</a>
+                    </li>
+                    <!-- For Trainee here -->
                 </ul>
             </li>
         </ul>

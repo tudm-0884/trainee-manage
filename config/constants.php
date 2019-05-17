@@ -17,4 +17,23 @@ return [
         '0' => 'Male',
         '1' => 'Female',
     ],
+    'test_status' => [
+        '0' => 'New',
+        '1' => 'Resolved',
+        '2' => 'Not achieved',
+        '3' => 'ReSend',
+        '4' => 'Done',
+    ],
+    'test_status_color' => [
+        '0' => 'secondary',
+        '1' => 'info',
+        '2' => 'warning',
+        '3' => 'primary',
+        '4' => 'success',
+    ],
+    'new' => 0,
+    'resolved' => 1,
+    'not_achieved' => 2,
+    'resend' => 3,
+    'done' => 4,
 ];

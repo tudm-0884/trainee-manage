@@ -38,7 +38,7 @@ class Trainee extends Model
         return $this->belongsTo(StaffType::class, 'staff_type_id');
     }
 
-    public function test()
+    public function tests()
     {
         return $this->hasMany(Test::class);
     }

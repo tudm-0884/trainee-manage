@@ -18,8 +18,17 @@ class Test extends Model
      *
      * @return 
      */
+    protected $attributes = [
+        'mark' => 0,
+    ];
+
     public function trainee()
     {
         return $this->belongsTo(Trainee::class, 'trainee_id');
+    }
+
+    public function phase()
+    {
+        return $this->belongsTo(Phase::class, 'phase_id');
     }
 }
