@@ -3,6 +3,7 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item"><a href="{{ route('dashboard') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('Dashboard') }}</span></a>
             </li>
+            @can ('see-admin')
             <li class=" nav-item">
                 <a href="#"><i class="la la-user-secret"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainers') }}</span></a>
                 <ul class="menu-content">
@@ -12,6 +13,8 @@
                     </li>
                 </ul>
             </li>
+            @endcan
+            @if (Auth::user()->can('see-admin') || Auth::user()->can('see-trainers'))
             <li class=" nav-item">
                 <a href="#"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainees') }}</span></a>
                 <ul class="menu-content">
@@ -21,6 +24,8 @@
                     </li>
                 </ul>
             </li>
+            @endif
+            @if (Auth::user()->can('see-admin') || Auth::user()->can('see-trainers'))
             <li class=" nav-item">
                 <a href="#"><i class="la la-optin-monster"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Schedule') }}</span></a>
                 <ul class="menu-content">
@@ -53,22 +58,29 @@
                     </li>
                 </ul>
             </li>
+            @endif
             <li class=" nav-item">
                 <a href="#"><i class="la la-file-text-o"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Test') }}</span></a>
                 <ul class="menu-content">
                     <!-- For Trainer here -->
+                    @if (Auth::user()->can('see-admin') || Auth::user()->can('see-trainers'))
                     <li>
                         <a class="menu-item" href="{{ route('tests.index') }}" data-i18n="nav.templates.vert.main">{{ __('All Tests') }}</a>
                     </li>
+                    @endif
                     <!-- End Trainer here -->
+                    @can ('see-trainees')
                     <!-- For Trainee here -->
                     <li>
                         <a class="menu-item" href="{{ route('trainees.show_test') }}" data-i18n="nav.templates.vert.main">{{ __('My Tests in courses') }}</a>
                     </li>
+                    @endcan
                     <!-- For Trainee here -->
                 </ul>
+            @can ('see-trainees')
             <li class=" nav-item"><a href="{{ route('trainee.trainee_schedule') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('My Schedule') }}</span></a>
             </li>
+            @endcan
         </ul>
     </div>
 </div>

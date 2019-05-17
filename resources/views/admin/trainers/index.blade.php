@@ -46,11 +46,11 @@
                                             <th scope="row">{{ $trainer->id }}</th>
                                             <td>{{ $trainer->email }}</td>
                                             <td>{{ $trainer->user->name }}</td>
-                                            <td>{{ $trainer->language->name }}</td>
+                                            <td>{{ optional($trainer->language)->name }}</td>
                                             <td>{{ $trainer->dob }}</td>
                                             <td>{{ $trainer->phone }}</td>
                                             <td>{{ $trainer->address }}</td>
-                                            <td>{{ $trainer->office->name }}</td>
+                                            <td>{{ optional($trainer->office)->name }}</td>
                                             <td>
                                                 <a href="{{ route('trainers.edit', $trainer->id) }}" class="btn btn-light round mr-1">{{ __('Edit') }}</a>
                                                 <button type="button" class="btn btn-danger round mr-1" data-toggle="modal" data-target="#delete-{{ $trainer->id }}">{{ __('Delete') }}</button>
