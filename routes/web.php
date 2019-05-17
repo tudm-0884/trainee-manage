@@ -15,10 +15,10 @@ Auth::routes(['register' => false]);
 
 Route::get('/', 'HomeController@index')->name('home')->middleware('admin')->middleware('can:see-trainees');
 
-Route::group(['prefix' => 'admin','middleware' => 'can:see-trainer, can:see-admin'], function () {
+Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function () {
     Route::get('/', 'AdminController@index')->name('dashboard');
     //trainer
-    Route::resource('trainers', 'TrainerController');
+    Route::resource('trainers', 'TrainerController')->middleware('can:see-admin');
     //trainee
     Route::resource('trainees', 'TraineeController');
     Route::get('show-test', 'TraineeController@showTest')->name('trainees.show_test');
@@ -36,4 +36,4 @@ Route::group(['prefix' => 'admin','middleware' => 'can:see-trainer, can:see-admi
     Route::put('updateContent/{id}', 'TestController@updateContent')->name('tests.update_content');
 });
 
-Route::get('/trainee_schedule', 'TraineeController@getSchedule')->name('trainee.trainee_schedule')->middleware('admin')->middleware('can:see-trainers');
+Route::get('/trainee_schedule', 'TraineeController@getSchedule')->name('trainee.trainee_schedule')->middleware('admin')->middleware('can:see-trainees');

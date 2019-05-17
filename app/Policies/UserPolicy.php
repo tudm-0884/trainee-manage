@@ -45,13 +45,13 @@ class UserPolicy
             return false;
         }
     }
-//    public function viewSchedule(User $user)
-//    {
-//        if($user->roles <=2){
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
 
+    public function accessAdmin(User $user)
+    {
+        if ($user->roles <= '2'){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
