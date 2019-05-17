@@ -67,6 +67,7 @@
                     </li>
                     <!-- For Trainee here -->
                 </ul>
+            <li class=" nav-item"><a href="{{ route('trainee.trainee_schedule') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('My Schedule') }}</span></a>
             </li>
         </ul>
     </div>
