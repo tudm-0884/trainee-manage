@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
+
 
 class TraineeRepository extends BaseRepository implements TraineeRepositoryInterface
 {
@@ -221,5 +223,17 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
         }
         
         return $trainee->tests;
+    }
+
+    public function getCourse()
+    {
+        $current_user = Auth::user();
+        $trainee = $this->model->where('user_id', $current_user->id)->firstOrFail();
+        $course_id = optional($trainee->course)->id;
+        if ($course_id) {
+            return $course_id;
+        } else {
+            return false;
+        }
     }
 }

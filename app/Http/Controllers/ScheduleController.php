@@ -128,6 +128,7 @@ class ScheduleController extends Controller
         //
     }
 
+    // @param course id
     public function getTraineeSchedule($id)
     {
         $schedule_id = $this->schedule->getTraineeSchedule($id);

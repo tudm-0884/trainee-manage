@@ -37,3 +37,5 @@ Route::group(['prefix' => 'admin',], function () {
     Route::resource('tests', 'TestController');
     Route::put('updateContent/{id}', 'TestController@updateContent')->name('tests.update_content');
 });
+
+Route::get('/trainee_schedule', 'TraineeController@getSchedule')->name('trainee.trainee_schedule');

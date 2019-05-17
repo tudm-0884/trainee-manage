@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ScheduleRepositoryInterface;
 use App\Repositories\TraineeRepositoryInterface;
 use Illuminate\Http\Request;
 
 class TraineeController extends Controller
 {
 
-    protected $trainee;
+    protected $trainee, $schedule;
 
-    public function __construct(TraineeRepositoryInterface $trainee)
+    public function __construct(TraineeRepositoryInterface $trainee, ScheduleRepositoryInterface $schedule)
     {
         $this->trainee = $trainee;
+        $this->schedule = $schedule;
     }
 
     /**
@@ -134,7 +136,23 @@ class TraineeController extends Controller
     public function showTest()
     {
         $tests = $this->trainee->showTest();
-        
+
         return view('admin.trainees.show_test', compact('tests'));
+    }
+
+    public function getSchedule()
+    {
+        $course_id = $this->trainee->getCourse();
+        if (!$course_id) {
+            return redirect()->route('home')->with('status', __('You have not joined a course'));
+        }
+        $schedule_id = $this->schedule->getTraineeSchedule($course_id);
+        $current_phase = $this->schedule->getCurrentPhase($course_id);
+        $schedule = $this->schedule->get([], $schedule_id);
+        $phases = $this->schedule->getPhase($schedule_id);
+        $duration = $this->schedule->getTime($schedule_id);
+        $trainees = $this->trainee->all();
+
+        return view('trainee.trainee_schedule', compact('current_phase', 'schedule', 'phases', 'duration', 'trainees'));
     }
 }
