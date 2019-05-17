@@ -52,20 +52,20 @@
                                         <tbody>
                                         @foreach ($trainees as $trainee)
                                             <tr>
-                                                <th scope="row"> <a href="{{ route('trainees.edit', $trainee->id) }}">{{ $trainee->id }}</a></th>
-                                                <td>{{ $trainee->user->email }}</td>
-                                                <td>{{ $trainee->user->name }}</td>
-                                                <td>{{ $trainee->language->name }}</td>
+                                                <th scope="row"> <a href="{{ route('schedules.trainee_schedule', $trainee->course_id) }}">{{ $trainee->id }}</a></th>
+                                                <td>{{ optional($trainee->user)->email }}</td>
+                                                <td>{{ optional($trainee->user)->name }}</td>
+                                                <td>{{ optional($trainee->language)->name }}</td>
                                                 <td>{{ $trainee->dob }}</td>
                                                 <td>{{ $trainee->phone }}</td>
                                                 <td>{{ $trainee->address }}</td>
-                                                <td>{{ $trainee->office->name }}</td>
+                                                <td>{{ optional($trainee->office)->name }}</td>
                                                 <th>{{ isset($trainee->trainer->user->name) ? $trainee->trainer->user->name : '' }}</th>
-                                                <th>{{ $trainee->staff_type->name }}</th>
+                                                <th>{{ optional($trainee->staff_type)->name }}</th>
                                                 <th>{{ config('constants.gender.' . $trainee->gender) }}</th>
                                                 <th>{{ $trainee->graduation_year }}</th>
                                                 <th>{{ $trainee->batch }}</th>
-                                                <th>{{ $trainee->university->name }}</th>
+                                                <th>{{ optional($trainee->university)->name }}</th>
                                                 <th>{{ $trainee->internship_start_time }}</th>
                                                 <th>{{ $trainee->internship_end_time }}</th>
                                                 <th>{{ isset($trainee->course->course_name) ? $trainee->course->course_name : '' }}</th>

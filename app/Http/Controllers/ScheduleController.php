@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\CourseRepositoryInterface;
 use App\Repositories\LanguageRepositoryInterface;
 use App\Repositories\PhaseRepositoryInterface;
 use App\Repositories\ScheduleRepositoryInterface;
@@ -15,14 +16,15 @@ use App\Http\Requests\ScheduleRequest;
 
 class ScheduleController extends Controller
 {
-    protected $phase, $trainee, $trainer, $schedule, $language;
+    protected $phase, $trainee, $trainer, $schedule, $language, $course;
 
     public function __construct(
         PhaseRepositoryInterface $phase,
         TraineeRepositoryInterface $trainee,
         TrainerRepositoryInterface $trainer,
         ScheduleRepositoryInterface $schedule,
-        LanguageRepositoryInterface $language
+        LanguageRepositoryInterface $language,
+        CourseRepositoryInterface $course
     )
     {
         $this->phase = $phase;
@@ -30,6 +32,7 @@ class ScheduleController extends Controller
         $this->trainee = $trainee;
         $this->schedule = $schedule;
         $this->language = $language;
+        $this->course = $course;
     }
 
     /**
@@ -84,7 +87,7 @@ class ScheduleController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -123,5 +126,17 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getTraineeSchedule($id)
+    {
+        $schedule_id = $this->schedule->getTraineeSchedule($id);
+        $current_phase = $this->schedule->getCurrentPhase($id);
+        $schedule = $this->schedule->get([], $schedule_id);
+        $phases = $this->schedule->getPhase($schedule_id);
+        $duration = $this->schedule->getTime($schedule_id);
+        $trainees = $this->trainee->all();
+
+        return view('admin.schedules.trainee_schedule', compact('schedule', 'phases', 'duration', 'trainees', 'current_phase'));
     }
 }

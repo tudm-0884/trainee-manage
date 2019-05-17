@@ -58,4 +58,6 @@ interface ScheduleRepositoryInterface
      * @return array
      */
     public function getScheduleArray();
+    public function getTraineeSchedule($id);
+    public function getCurrentPhase($id);
 }

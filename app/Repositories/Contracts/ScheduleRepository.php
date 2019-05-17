@@ -2,8 +2,10 @@
 
 namespace App\Repositories\Contracts;
 
+use App\Models\Course;
 use App\Models\Phase;
 use App\Models\StaffType;
+use App\Models\Trainee;
 use App\Repositories\ScheduleRepositoryInterface;
 use App\Repositories\Contracts\BaseRepository;
 use App\Models\Schedule;
@@ -13,15 +15,17 @@ use Illuminate\Support\Facades\DB;
 
 class ScheduleRepository extends BaseRepository implements ScheduleRepositoryInterface
 {
+    protected $course;
     /**
      * Create a new Repository instance.
      *
      * @param  ScheduleRepositoryInterface
      * @return void
      */
-    public function __construct(Schedule $model)
+    public function __construct(Schedule $model, Course $course)
     {
         parent::__construct($model);
+        $this->course = $course;
     }
 
     public function store($data)
@@ -90,5 +94,37 @@ class ScheduleRepository extends BaseRepository implements ScheduleRepositoryInt
     public function getScheduleArray()
     {
         return $this->model->get()->pluck('name', 'id')->toArray();
+    }
+
+    public function getTraineeSchedule($id)
+    {
+        $course = Course::findOrFail($id);
+
+        return $course->schedule_id;
+    }
+
+    public function getCurrentPhase($id)
+    {
+        $course = Course::findOrFail($id);
+        $number_of_days = Carbon::now()->diffInDays($course->start_date);
+        $schedule = $this->model->findOrFail($course->schedule_id);
+        $result = array(
+            'current_phase' => '',
+            'days_left' => '',
+        );
+
+        for ($i = 0; $i < $schedule->phases->count(); $i++) {
+            $number_of_days = $number_of_days - $schedule->phases[$i]->pivot->time_duration;
+            if ($number_of_days <= 0) {
+                $days_left = abs($number_of_days);
+                return $result = ([
+                    'current_phase' => $i,
+                    'days_left' => $days_left,
+                ]
+                );
+            }
+        }
+
+        return $result;
     }
 }
