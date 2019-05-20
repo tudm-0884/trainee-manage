@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\ScheduleRepositoryInterface;
 use App\Repositories\TraineeRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\TraineeRequest;
 
 class TraineeController extends Controller
 {
@@ -52,11 +53,11 @@ class TraineeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TraineeRequest $request)
     {
         $trainee = $this->trainee->store($request);
         if (!$trainee) {
-            return back()->with('error', __('Something went wrong!'));
+            return redirect()->route('trainees.index')->with('status', __('Something went wrong!'));
         }
 
         return redirect()->route('trainees.index')->with('success', __('Create successfully!'));

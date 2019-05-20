@@ -27,12 +27,22 @@
         </div>
         <div class="form-group">
             <label for="complaintinput2">{{ __('Name') }}</label>
-            <input type="text" id="schedule_name" class="form-control round"
+            <input type="text" id="schedule_name" class="form-control round {{ $errors->has('name') ? 'border-danger' : '' }}"
                    name="name" value="{{ old('name') }}">
+            @if ($errors->has('name'))
+                <span class="help-block text-danger">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="complaintinput3">{{ __('Applied Day') }}</label>
-            <input type="date" id="applied_day_schedule" class="form-control round" name="applied_day" value="{{ old('applied_day') }}">
+            <input type="date" id="applied_day_schedule" class="form-control round {{ $errors->has('applied_day') ? 'border-danger' : '' }}" name="applied_day" value="{{ old('applied_day') }}">
+            @if ($errors->has('applied_day'))
+                <span class="help-block text-danger">
+                    <strong>{{ $errors->first('applied_day') }}</strong>
+                </span>
+            @endif
         </div>
     </fieldset>
     <!-- Step 2 -->

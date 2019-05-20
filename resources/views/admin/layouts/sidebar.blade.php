@@ -24,7 +24,7 @@
             <li class=" nav-item">
                 <a href="#"><i class="la la-users"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainees') }}</span></a>
                 <ul class="menu-content">
-                    <li><a class="menu-item" href="{{ route('trainees.index') }}" data-i18n="nav.templates.vert.main">{{ __('All Trainess') }}</a>
+                    <li><a class="menu-item" href="{{ route('trainees.index') }}" data-i18n="nav.templates.vert.main">{{ __('All Trainees') }}</a>
                     </li>
                     <li><a class="menu-item" href="{{ route('trainees.create') }}" data-i18n="nav.templates.horz.main">{{ __('Create Trainee') }}</a>
                     </li>

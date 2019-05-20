@@ -13,4 +13,10 @@
         </button>
         <strong> {{ session('success') }} </strong>
     </div>
-@endif 
+@endif
+@if (session('status'))
+    <div class="alert alert-danger" role="alert">
+        {{ session('status') }}
+    </div>
+@endif
+
