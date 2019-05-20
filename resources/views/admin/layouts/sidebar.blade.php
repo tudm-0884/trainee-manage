@@ -1,8 +1,14 @@
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+            @can ('access-admin')
             <li class=" nav-item"><a href="{{ route('dashboard') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('Dashboard') }}</span></a>
             </li>
+            @endcan
+            @can ('see-trainees')
+            <li class=" nav-item"><a href="{{ route('home') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('Dashboard') }}</span></a>
+            </li>
+            @endcan
             @can ('see-admin')
             <li class=" nav-item">
                 <a href="#"><i class="la la-user-secret"></i><span class="menu-title" data-i18n="nav.templates.main">{{ __('Trainers') }}</span></a>

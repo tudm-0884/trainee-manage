@@ -106,7 +106,8 @@ class ScheduleRepository extends BaseRepository implements ScheduleRepositoryInt
     public function getCurrentPhase($id)
     {
         $course = Course::findOrFail($id);
-        $number_of_days = Carbon::now()->diffInDays($course->start_date);
+        $number_of_days = Carbon::now()->diffInWeekDays($course->start_date);
+
         $schedule = $this->model->findOrFail($course->schedule_id);
         $result = array(
             'current_phase' => '',
