@@ -21,7 +21,6 @@ Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function 
     Route::resource('trainers', 'TrainerController')->middleware('can:see-admin');
     //trainee
     Route::resource('trainees', 'TraineeController');
-    Route::get('show-test', 'TraineeController@showTest')->name('trainees.show_test');
     //phase
     Route::resource('phases', 'PhaseController');
     //schedule
@@ -33,7 +32,8 @@ Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function 
     Route::post('removeTraineeFromCourse/{id}', 'CourseController@removeTraineeFromCourse')->name('courses.remove_trainee_from_course');
     //test
     Route::resource('tests', 'TestController');
-    Route::put('updateContent/{id}', 'TestController@updateContent')->name('tests.update_content');
 });
 
 Route::get('/trainee_schedule', 'TraineeController@getSchedule')->name('trainee.trainee_schedule')->middleware('admin')->middleware('can:see-trainees');
+Route::put('updateContent/{id}', 'TestController@updateContent')->name('tests.update_content');
+Route::get('show-test', 'TraineeController@showTest')->name('trainees.show_test');
