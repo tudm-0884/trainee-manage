@@ -50,4 +50,5 @@ interface UserRepositoryInterface
     public function delete($id);
 
     public function getCurrentUser();
+    public function changePassword($data, $id);
 }

@@ -99,7 +99,9 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
                 'course_id' => config('constants.constants.default_value'),
             ]);
             DB::commit();
-        } catch (\Illuminate\Database\QueryException $e) {
+
+            return true;
+        }  catch (\Illuminate\Database\QueryException $e) {
             return false;
         }
     }
@@ -134,6 +136,8 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
             'name' => $data['name'],
             'email' => $data['email'],
         ]);
+
+        return true;
     }
 
     public function delete($id)

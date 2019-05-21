@@ -32,8 +32,15 @@ Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function 
     Route::post('removeTraineeFromCourse/{id}', 'CourseController@removeTraineeFromCourse')->name('courses.remove_trainee_from_course');
     //test
     Route::resource('tests', 'TestController');
+    //profile
+    Route::get('profile/{id}', 'UserController@showChangePasswordForm')->name('trainers.profile');
+    Route::post('profile/{id}', 'UserController@changePassword')->name('trainers.update_profile');
+
 });
 
 Route::get('/trainee_schedule', 'TraineeController@getSchedule')->name('trainee.trainee_schedule')->middleware('admin')->middleware('can:see-trainees');
-Route::put('updateContent/{id}', 'TestController@updateContent')->name('tests.update_content');
-Route::get('show-test', 'TraineeController@showTest')->name('trainees.show_test');
+Route::put('updateContent/{id}', 'TestController@updateContent')->name('tests.update_content')->middleware('admin')->middleware('can:see-trainees');
+Route::get('show-test', 'TraineeController@showTest')->name('trainees.show_test')->middleware('admin')->middleware('can:see-trainees');
+
+Route::get('profile/{id}', 'UserController@showChangePasswordForm')->name('trainees.profile')->middleware('admin')->middleware('can:see-trainees');
+Route::post('profile/{id}', 'UserController@changePassword')->name('trainees.update_profile')->middleware('admin')->middleware('can:see-trainees');

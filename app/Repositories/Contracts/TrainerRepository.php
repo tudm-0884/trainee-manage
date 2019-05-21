@@ -27,6 +27,7 @@ class TrainerRepository extends BaseRepository implements TrainerRepositoryInter
      */
     public function __construct(Trainer $trainer, User $user, Language $language)
     {
+        parent::__construct($trainer);
         $this->trainer = $trainer;
         $this->user = $user;
         $this->language = $language;
@@ -94,6 +95,8 @@ class TrainerRepository extends BaseRepository implements TrainerRepositoryInter
             'name' => $data['name'],
             'email' => $data['email']
         ]);
+
+        return true;
     }
 
     public function getCurrentUser()

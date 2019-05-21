@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
             <label for="complaintinput3">{{ __('Start Date') }}</label>
-            <input type="date" id="internship_start_time" class="form-control round {{ $errors->has('internship_start_time') ? 'border-danger' : '' }}" name="internship_start_time" value="{{ isset($trainee) ? $trainee->dob : old('internship_start_time') }}">
+            <input type="date" id="internship_start_time" class="form-control round {{ $errors->has('internship_start_time') ? 'border-danger' : '' }}" name="internship_start_time" value="{{ isset($trainee) ? date('Y-m-d',strtotime($trainee->internship_start_time)) : old('internship_start_time') }}">
             @if ($errors->has('internship_start_time'))
                 <span class="help-block text-danger">
                     <strong>{{ $errors->first('internship_start_time') }}</strong>
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
             <label for="complaintinput3">{{ __('End Date') }}</label>
-            <input type="date" id="internship_end_time" class="form-control round {{ $errors->has('internship_end_time') ? 'border-danger' : '' }}" name="internship_end_time" value="{{ isset($trainee) ? $trainee->dob : old('internship_end_time') }}">
+            <input type="date" id="internship_end_time" class="form-control round {{ $errors->has('internship_end_time') ? 'border-danger' : '' }}" name="internship_end_time" value="{{ isset($trainee) ? date('Y-m-d',strtotime($trainee->internship_end_time)) : old('internship_end_time') }}">
             @if ($errors->has('internship_end_time'))
                 <span class="help-block text-danger">
                     <strong>{{ $errors->first('internship_end_time') }}</strong>
