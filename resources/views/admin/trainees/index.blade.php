@@ -66,8 +66,8 @@
                                                 <th>{{ $trainee->graduation_year }}</th>
                                                 <th>{{ $trainee->batch }}</th>
                                                 <th>{{ optional($trainee->university)->name }}</th>
-                                                <th>{{ $trainee->internship_start_time }}</th>
-                                                <th>{{ $trainee->internship_end_time }}</th>
+                                                <th>{{ date('Y-m-d',strtotime($trainee->internship_start_time)) }}</th>
+                                                <th>{{ date('Y-m-d',strtotime($trainee->internship_end_time)) }}</th>
                                                 <th>{{ isset($trainee->course->course_name) ? $trainee->course->course_name : '' }}</th>
                                                 <td>
                                                     <a href="{{ route('trainees.edit', $trainee->id) }}" class="btn btn-light round mr-1">{{ __('Edit') }}</a>

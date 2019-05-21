@@ -84,7 +84,7 @@
                     <!-- For Trainee here -->
                 </ul>
             @can ('see-trainees')
-            <li class=" nav-item"><a href="{{ route('trainee.trainee_schedule') }}"><i class="la la-home"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('My Schedule') }}</span></a>
+            <li class=" nav-item"><a href="{{ route('trainee.trainee_schedule') }}"><i class="la la-calendar"></i><span class="menu-title" data-i18n="nav.dash.main">{{ __('My Schedule') }}</span></a>
             </li>
             @endcan
         </ul>
