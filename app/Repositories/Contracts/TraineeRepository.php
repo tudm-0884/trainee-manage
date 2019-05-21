@@ -2,8 +2,10 @@
 
 namespace App\Repositories\Contracts;
 
+use App\Models\Course;
 use App\Models\Language;
 use App\Models\Office;
+use App\Models\Schedule;
 use App\Models\StaffType;
 use App\Models\Trainer;
 use App\Models\University;
@@ -11,6 +13,7 @@ use App\Models\User;
 use App\Repositories\TraineeRepositoryInterface;
 use App\Repositories\Contracts\BaseRepository;
 use App\Models\Trainee;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -238,5 +241,29 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
         } else {
             return false;
         }
+    }
+
+    public function timeLeft()
+    {
+        $trainees = $this->trainee->all();
+        $almost_expired_trainees = collect();
+        foreach ($trainees as $trainee) {
+            $course_id = $trainee->course_id;
+            if ($course_id > 0) {
+                $course = Course::findOrFail($course_id);
+                $number_of_days = Carbon::now()->diffInWeekDays($course->start_date);
+
+                $total_days = 0;
+                $schedule = Schedule::findOrFail($course->schedule_id);
+                for ($i = 0; $i < $schedule->phases->count(); $i++) {
+                    $total_days = $total_days + $schedule->phases[$i]->pivot->time_duration;
+                }
+                if (($total_days - $number_of_days) < 2) {
+                    $almost_expired_trainees->push($trainee);
+                }
+            }
+        }
+
+        return $almost_expired_trainees;
     }
 }
