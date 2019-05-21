@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\TrainerRepositoryInterface;
 use Illuminate\Http\Request;
+use App\Http\Requests\TrainerRequest;
 
 class TrainerController extends Controller
 {
@@ -47,7 +48,7 @@ class TrainerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TrainerRequest $request)
     {
         $trainer = $this->trainer->store($request->all());
         if (!$trainer) {

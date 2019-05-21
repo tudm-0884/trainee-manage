@@ -99,9 +99,8 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
                 'course_id' => config('constants.constants.default_value'),
             ]);
             DB::commit();
-            return true;
-        } catch (Exception $e) {
-            return redirect()->route('trainees.index');
+        } catch (\Illuminate\Database\QueryException $e) {
+            return false;
         }
     }
     public function get($relation = [], $id)
@@ -178,7 +177,7 @@ class TraineeRepository extends BaseRepository implements TraineeRepositoryInter
         try {
             $result = $this->model->find($id)->update(['course_id' => 0]);
             if ($result) {
-                $this->removeTestFromTrainees($result);
+                $this->removeTestFromTrainees($id);
             }
             DB::commit();
         } catch (Exception $e) {

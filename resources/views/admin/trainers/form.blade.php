@@ -7,13 +7,23 @@
     <div class="form-body">
         <div class="form-group">
             <label for="complaintinput1">{{ __('Email') }}</label>
-            <input type="text" id="email" class="form-control round"
+            <input type="text" id="email" class="form-control round {{ $errors->has('email') ? 'border-danger' : '' }}"
                    name="email" value="{{ isset($trainer) ? $trainer->user->email : old('email') }}">
+            @if ($errors->has('email'))
+                <span class="help-block text-danger">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="complaintinput2">{{ __('Name') }}</label>
-            <input type="text" id="name" class="form-control round"
+            <input type="text" id="name" class="form-control round {{ $errors->has('name') ? 'border-danger' : '' }}"
                    name="name" value="{{ isset($trainer) ? $trainer->user->name : old('name') }}">
+            @if ($errors->has('name'))
+                <span class="help-block text-danger">
+                    <strong>{{ $errors->first('name') }}</strong>
+                </span>
+            @endif
         </div>
         <div class="form-group">
             <label for="complaintinput3">{{ __('Date of Birth') }}</label>
