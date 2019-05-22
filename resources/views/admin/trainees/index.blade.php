@@ -20,6 +20,9 @@
                             <div class="btn btn-outline-info btn-glow float-right mt-2">
                                 <a href="{{ route('trainees.create') }}"> {{ __('Create') }}</a>
                             </div>
+                            <div class="btn btn-outline-info btn-glow float-right mt-2 mr-1">
+                                <a href="{{ route('trainees.index', ['check' => 'on']) }}"> {{ __('Check') }}</a>
+                            </div>
                         </div>
                         @include('admin.components.alert')
                         <div class="card-content collapse show">

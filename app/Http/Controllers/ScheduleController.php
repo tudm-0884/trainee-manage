@@ -132,7 +132,7 @@ class ScheduleController extends Controller
     public function getTraineeSchedule($id)
     {
         if ($id == 0) {
-            return redirect()->route('trainees.index')->with('status', __('This student has not joined a course '));
+            return redirect()->route('trainees.index')->with('status', __('This trainee has not joined a course '));
         }
         $schedule_id = $this->schedule->getTraineeSchedule($id);
         $current_phase = $this->schedule->getCurrentPhase($id);

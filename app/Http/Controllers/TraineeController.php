@@ -23,11 +23,17 @@ class TraineeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $trainees = $this->trainee->all();
+        if (!is_null($request->check)) {
+            $trainees = $this->trainee->timeLeft();
 
-        return view('admin.trainees.index', compact('trainees'));
+            return view('admin.trainees.index', compact('trainees'));
+        } else {
+            $trainees = $this->trainee->all();
+
+            return view('admin.trainees.index', compact('trainees'));
+        }
     }
 
     /**
