@@ -8,7 +8,7 @@
         <div class="form-group">
             <label for="complaintinput1">{{ __('Email') }}</label>
             <input type="text" id="email" class="form-control round {{ $errors->has('email') ? 'border-danger' : '' }}"
-                   name="email" value="{{ isset($trainee) ? $trainee->user->email : old('email') }}">
+                   name="email" value="{{ isset($trainee) ? optional($trainee->user)->email : old('email') }}">
             @if ($errors->has('email'))
                 <span class="help-block text-danger">
                     <strong>{{ $errors->first('email') }}</strong>
@@ -19,7 +19,7 @@
         <div class="form-group">
             <label for="complaintinput2">{{ __('Name') }}</label>
             <input type="text" id="name" class="form-control round {{ $errors->has('name') ? 'border-danger' : '' }}"
-                   name="name" value="{{ isset($trainee) ? $trainee->user->name : old('name') }}">
+                   name="name" value="{{ isset($trainee) ? optional($trainee->user)->name : old('name') }}">
             @if ($errors->has('name'))
                 <span class="help-block text-danger">
                     <strong>{{ $errors->first('name') }}</strong>

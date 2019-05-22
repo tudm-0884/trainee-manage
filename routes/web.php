@@ -36,8 +36,6 @@ Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function 
     Route::get('profile/{id}', 'UserController@showChangePasswordForm')->name('trainers.profile');
     Route::post('profile/{id}', 'UserController@changePassword')->name('trainers.update_profile');
 
-    Route::post('trainees', 'TraineeController@index')->name('trainees.check');
-
 });
 
 Route::get('/trainee_schedule', 'TraineeController@getSchedule')->name('trainee.trainee_schedule')->middleware('admin')->middleware('can:see-trainees');
