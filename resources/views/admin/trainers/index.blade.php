@@ -44,7 +44,7 @@
                                     @foreach ($trainers as $trainer)
                                         <tr>
                                             <th scope="row">{{ $trainer->id }}</th>
-                                            <td>{{ $trainer->email }}</td>
+                                            <td>{{ optional($trainer->user)->email }}</td>
                                             <td>{{ $trainer->user->name }}</td>
                                             <td>{{ optional($trainer->language)->name }}</td>
                                             <td>{{ $trainer->dob }}</td>
