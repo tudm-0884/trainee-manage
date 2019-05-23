@@ -16,3 +16,5 @@ yarn-error.log
 .bowerrc
 bower.json
 /.idea
+/public/css
+/public/js

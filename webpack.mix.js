@@ -13,3 +13,9 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
+
+mix.copy('resources/js/custom.js', 'public/js/custom.js');
+mix.copy('resources/js/multiselect.js', 'public/js/multiselect.js');
+mix.copy('resources/js/timeline.js', 'public/js/timeline.js');
+mix.copy('resources/sass/custom.css', 'public/css/custom.css');
+
