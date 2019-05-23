@@ -30,9 +30,9 @@
     <script src="{{ asset('bower_components/tracking_theme/app-assets/vendors/js/pickers/dateTime/moment-with-locales.min.js') }}"></script>
     <script src="{{ asset('bower_components/tracking_theme/app-assets/vendors/js/pickers/daterange/daterangepicker.js') }}"></script>
     <script src="{{ asset('bower_components/tracking_theme/app-assets/js/scripts/forms/wizard-steps.js') }}"></script>
-    <script src="{{ asset('js/custom.js') }}"></script>
-    <script src="{{ asset('js/multiselect.js') }}"></script>
+    <script src="{{ mix('js/custom.js') }}"></script>
+    <script src="{{ mix('js/multiselect.js') }}"></script>
 @endpush
 @push('css')
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/custom.css') }}">
 @endpush

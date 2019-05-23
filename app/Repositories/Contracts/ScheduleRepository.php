@@ -73,8 +73,9 @@ class ScheduleRepository extends BaseRepository implements ScheduleRepositoryInt
     {
         $schedule = $this->model->findOrFail($id);
         $final_result = array();
+        $schedule_sort = $schedule->phases->sortBy('pivot.priority');
 
-        foreach ($schedule->phases as $phase) {
+        foreach ($schedule_sort as $phase) {
             $result = ([
                 'date' => $phase->pivot->time_duration . __(' day(s)'),
                 'content' => $phase->name,

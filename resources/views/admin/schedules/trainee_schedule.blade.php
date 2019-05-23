@@ -22,5 +22,5 @@
 @endpush
 @push ('js')
     <script src="{{ asset('bower_components/trainee-manage/dist/jquery.roadmap.js') }}"></script>
-    <script src="{{ asset('js/timeline.js') }}"></script>
+    <script src="{{ mix('js/timeline.js') }}"></script>
 @endpush
