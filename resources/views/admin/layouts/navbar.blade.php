@@ -54,9 +54,11 @@
                             <a class="dropdown-item" href="#"><i class="flag-icon flag-icon-vn"></i> {{ __('Vietnamese') }}</a>
                         </div>
                     </li>
+                    <input type="hidden" value="{{ auth()->user()->id }}" name="user_id" id="current_user_id">
+                    <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}">
                     <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown"><i class="ficon ft-bell"></i>
-                            <span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow">{{ __('?') }}</span>
+                            <span class="noti badge badge-pill badge-default badge-danger badge-default badge-up badge-glow">{{ isset(auth()->user()->trainee) ? auth()->user()->trainee->unreadNotifications->count() : (isset(auth()->user()->trainer) ? auth()->user()->trainer->unreadNotifications->count() : "") }}</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                             <li class="dropdown-menu-header">
@@ -64,6 +66,36 @@
                                     <span class="grey darken-2">{{ __('Notifications') }}</span>
                                 </h6>
                             </li>
+                        @if (Auth::user()->can('see-trainers'))
+                            @foreach (auth()->user()->trainer->unreadNotifications as $notification)
+                                <a href="{{ route('tests.index') }}">
+                                    <div class="media">
+                                        <div class="media-left align-self-center"><i class="ft-file icon-bg-circle bg-teal"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading">{{ $notification->data['title'] }}</h6>
+                                            <small>
+                                                <time class="media-meta text-muted" datetime="">{{ $notification->created_at }}</time>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        @endif
+                        @if (Auth::user()->can('see-trainees'))
+                            @foreach (auth()->user()->trainee->unreadNotifications as $notification)
+                                <a href="{{ route('trainees.show_test') }}">
+                                    <div class="media">
+                                        <div class="media-left align-self-center"><i class="ft-file icon-bg-circle bg-teal"></i></div>
+                                        <div class="media-body">
+                                            <h6 class="media-heading">{{ $notification->data['title'] }}</h6>
+                                            <small>
+                                                <time class="media-meta text-muted" datetime="">{{ $notification->created_at }}</time>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        @endif
                         </ul>
                     </li>
                 </ul>

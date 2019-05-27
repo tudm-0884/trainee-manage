@@ -16,4 +16,6 @@
 <!-- END PAGE LEVEL JS-->
 <script src="{{ asset('bower_components/tracking_theme/app-assets/js/scripts/modal/components-modal.js') }}"></script>
 
+<script src="{{ mix('js/mark_as_read.js') }}"></script>
+
 @stack('js')

@@ -15,6 +15,8 @@ Auth::routes(['register' => false]);
 
 Route::get('/', 'HomeController@index')->name('home')->middleware('admin')->middleware('can:see-trainees');
 
+Route::post('mark_as_read', 'TestController@markAsRead');
+
 Route::group(['prefix' => 'admin','middleware' => 'can:access-admin'], function () {
     Route::get('/', 'AdminController@index')->name('dashboard');
     //trainer

@@ -4,5 +4,6 @@
     "/js/custom.js": "/js/custom.js",
     "/js/multiselect.js": "/js/multiselect.js",
     "/js/timeline.js": "/js/timeline.js",
+    "/js/mark_as_read.js": "/js/mark_as_read.js",
     "/css/custom.css": "/css/custom.css"
 }

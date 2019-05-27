@@ -36,4 +36,8 @@ return [
     'not_achieved' => 2,
     'resend' => 3,
     'done' => 4,
+    'notification' => [
+        'test' => 'Test',
+        'test_result' => 'Test Result',
+    ],
 ];
