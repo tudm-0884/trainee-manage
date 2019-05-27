@@ -55,4 +55,5 @@ interface TestRepositoryInterface
      * @return int|boolean
      */
     public function updateContent($data, $id);
+    public function markAsRead($data);
 }

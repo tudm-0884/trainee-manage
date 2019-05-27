@@ -45,6 +45,7 @@
                                                         <form class="form" action="{{ route('tests.update_content', $test->id) }}" method="POST">
                                                             @csrf
                                                             @method('PUT')
+                                                            <input type="hidden" name="trainee_id" value="{{ $test->trainee_id }}">
                                                             <div class="form-body">
                                                                 <div class="form-group">
                                                                     <label for="content">{{ __('Test Link') }}</label>

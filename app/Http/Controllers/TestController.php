@@ -138,4 +138,9 @@ class TestController extends Controller
 
         return redirect()->back()->with('success', __('Update successfully!'));
     }
+
+    public function markAsRead(Request $request)
+    {
+        $this->test->markAsRead($request);
+    }
 }

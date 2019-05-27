@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Trainer extends Model
 {
+    use Notifiable;
     /**
      * The attributes that aren't mass assignable.
      *
